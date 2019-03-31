@@ -45,9 +45,9 @@ module	ARM_DataMemory
 		begin
 			for (i = 0; i < DataMemSize; i = i + 1)	RAM[i] = 32'd0;
 		end*/
-		/*else */if (i_Write_Enable)	RAM[i_Address] <= i_Write_Data;
+		/*else */if (i_Write_Enable)	RAM[i_Address[(BusWidth - 1):2]] <= i_Write_Data;
 	end
 
-	assign o_Read_Data = RAM[i_Address];
+	assign o_Read_Data = RAM[i_Address[(BusWidth - 1):2]];
 
 endmodule

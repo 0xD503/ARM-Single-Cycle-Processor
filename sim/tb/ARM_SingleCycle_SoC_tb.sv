@@ -26,15 +26,18 @@ module ARM_SigleCycle_SoC_tb #(parameter BusWidth = 32)	();
 	begin
 		if (s_Mem_Write)
 		begin
-			if ((s_Address === 100) & (s_Write_Data === 7))
+			if (s_Address === 100)
 			begin
-				$display("Simulation succeeded! Hurrrrray! Your first processor is working!");
-				$stop;
-			end
-			else
-			begin
-				$display("Simulation failed. :-((");
-				$stop;
+				if (s_Write_Data === 7)
+				begin
+					$display("Simulation succeeded! Hurrrrray! Your first processor is working!");
+					$stop;
+				end
+				else
+				begin
+					$display("Simulation failed. :-((");
+					$stop;
+				end
 			end
 		end
 	end
